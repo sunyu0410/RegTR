@@ -6,6 +6,7 @@ import math
 from typing import Dict, List
 
 import numpy as np
+np.bool = bool
 from scipy.spatial.transform import Rotation
 from scipy.stats import special_ortho_group
 import torch
