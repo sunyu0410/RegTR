@@ -1,4 +1,10 @@
 # REGTR: End-to-end Point Cloud Correspondences with Transformers
+## Running on RunPod
+```shell
+bash ME_setup/init.sh
+cd src
+python train.py --config conf/modelnet.yaml
+```
 
 This repository contains the source code for REGTR. REGTR utilizes multiple transformer attention layers to directly predict each downsampled point's corresponding location in the other point cloud. Unlike typical correspondence-based registration algorithms, the predicted correspondences are clean and do not require an additional RANSAC step. This results in a fast, yet accurate registration.
 
