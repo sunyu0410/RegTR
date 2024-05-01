@@ -228,15 +228,18 @@ def batch_grid_subsampling_kpconv_gpu(points, batches_len, features=None, labels
     device = points[0].device
 
     coord_batched = ME.utils.batched_coordinates(
-        [points[batch_start_end[b]:batch_start_end[b + 1]] / sampleDl for b in range(B)], device=device)
+        [points[batch_start_end[b]:batch_start_end[b + 1]].cpu() / sampleDl for b in range(B)], device='cpu')
+    
     sparse_tensor = ME.SparseTensor(
-        features=points,
+        features=points.cpu(),
         coordinates=coord_batched,
         quantization_mode=ME.SparseTensorQuantizationMode.UNWEIGHTED_AVERAGE
     )
 
-    s_points = sparse_tensor.features
+    s_points = sparse_tensor.features.to('cuda')
     s_len = torch.tensor([f.shape[0] for f in sparse_tensor.decomposed_features], device=device)
+
+    print(coord_batched, s_points, s_len)
     return s_points, s_len
 
 
