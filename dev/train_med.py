@@ -1,5 +1,5 @@
 import sys
-sys.path.append('../src')
+sys.path.append('/workspace/RegTR/src')
 
 import os
 from data_loaders import modelnet
@@ -126,7 +126,7 @@ if __name__ == "__main__":
         'crop', 45.0, 0.5, 1024, [0.7, 0.7]
     )
 
-    data_dir = Path('data/regtr_liver_npy')
+    data_dir = Path('dev/data/regtr_liver_npy')
     filelist = list(data_dir.iterdir())
 
     files_train = filelist[:800]
