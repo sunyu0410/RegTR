@@ -2,6 +2,8 @@ import MinkowskiEngine as ME
 from torch import nn
 import torch
 
+breakpoint()
+
 class ExampleNetwork(ME.MinkowskiNetwork):
   def __init__(self, in_feat, out_feat, D):
     super(ExampleNetwork, self).__init__(D)
